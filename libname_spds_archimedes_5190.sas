@@ -1,0 +1,1 @@
+LIBNAME SPDARCLb SASSPDS  LIBGEN=YES  IP=YES  DISCONNECT=YES schema="tmyr12" USER="dataadm" PASSWORD="spds456" HOST='archimedes.am.lilly.com' Serv='5190' unixdomain=no netcomp=yes compress=yes;

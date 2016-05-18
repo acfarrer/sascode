@@ -1,0 +1,1 @@
+LIBNAME SPDSLib SASSPDS  LIBGEN=YES  IP=YES  DISCONNECT=YES schema="tmyr09" USER="dataadm" PASSWORD="spds7737" HOST='localhost' Serv='5404' unixdomain=yes netcomp=no compress=yes;
