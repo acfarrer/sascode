@@ -1,0 +1,24 @@
+/* Get library and table names from Metadata. Need to have valid meta credentials. */
+data attr_SASLibrary (keep = name uri tabname taburi ) ;
+  length name update desc uri attr value tabname taburi $60 ;
+  nobj= metadata_getnobj("omsobj:SASLibrary?@Id contains '.'", 1,uri);
+  natr= metadata_getnatr(uri, 1, attr, value);
+  do i = 1 to nobj ;
+    objrc= metadata_getnobj("omsobj:SASLibrary?@Id contains '.'",i,uri);
+	rc=metadata_getattr(uri, "Name", name);
+	rc=metadata_getattr(uri, "MetadataUpdated", update);
+	rc=metadata_getattr(uri, "Desc", desc);
+	put update uri name @90 desc ;
+	trc=1;
+	arc=0;
+	n=1;
+	do while(trc>0);
+	  trc=metadata_getnasn(uri, "Tables", n, taburi );
+	  arc=1;
+	  if (trc>0) then arc=metadata_getattr(taburi,"Name",tabname);
+	  if (arc=0) then put tabname taburi ;
+	  n=n+1;
+	  output ;
+	end;
+  end ;
+run;
